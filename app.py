@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -31,7 +31,11 @@ def about():
 
 @app.route('/useragent')
 def useragent():
-    return 'useragent'
+    browser = request.user_agent.browser.capitalize()
+    os = request.user_agent.platform.capitalize()
+
+    return (f'<p>OS name: {os}</p>'
+            f'<p>Browser: {browser}</p>')
 
 
 if __name__ == "__main__":
