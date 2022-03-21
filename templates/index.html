@@ -1,0 +1,8 @@
+<!doctype html>
+<title>Flask OAuth</title>
+<h1>Flask OAuth</h1>
+{% for key, value in endpoints.items() %}
+<div>
+  <a href="{{ value }}"> {{ key.capitalize() }}</a>
+</div>
+{% endfor %}
