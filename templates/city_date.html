@@ -1,0 +1,24 @@
+<!doctype html>
+<head>
+  <title>Weather</title>
+</head>
+<body>
+  {% if city and date %}
+  <h1>Weather in {{ city }} on {{ date }}</h1>
+  <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="">
+  {% for key, value in weather.items() %}
+  {% if key != 'icon' and key != 'date' %}
+  <div>
+    {{ key.capitalize() }}: {{ value }}
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% else %}
+  <h1>Please input city and date in url</h1>
+  <p>https://127.0.0.1:5000/<strong>london/21-03-2022</strong></p>
+  <strong>
+  <p>You can get data for the previous 5 days or forecast for 7 days.</p>
+  <p>Supported date formats: DD-MM-YYYY, DD-MM-YY, YYYY-MM-DD.</p>
+  <strong>
+  {% endif %}
+</body>

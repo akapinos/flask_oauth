@@ -1,21 +1,25 @@
 <!doctype html>
-<title>Weather forecast</title>
-{% if city %}
-<h1>7 day forecast {{ city.capitalize() }}</h1>
-{% for weather in weather_data %}
+<head>
+  <title>Weather forecast</title>
+</head>
+<body>
+  {% if city %}
+  <h1>7 day forecast {{ city.capitalize() }}</h1>
+  {% for weather in weather_data %}
   <p>{{ weather.date }}</p>
   <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="">
   {% for key, value in weather.items() %}
-    {% if key != 'icon' and key != 'date' %}
-      <div>
-      {{ key.capitalize() }}: {{ value }}
-      </div>
-    {% endif %}
+  {% if key != 'icon' and key != 'date' %}
+  <div>
+    {{ key.capitalize() }}: {{ value }}
+  </div>
+  {% endif %}
   {% endfor %}
-{% endfor %}
-{% else %}
-<h1>7 day forecast<h1>
-<h2>Please input city in url</h2>
-<h3>Example</h3>
-<code>https://127.0.0.1:5000/list/<strong>london</strong></code>
-{% endif %}
+  {% endfor %}
+  {% else %}
+  <h1>7 day forecast</h1>
+  <p>Please input city in url</p>
+  <p>Example</p>
+  <code>https://127.0.0.1:5000/list/<strong>london</strong></code>
+  {% endif %}
+</body>
